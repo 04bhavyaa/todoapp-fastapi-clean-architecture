@@ -1,0 +1,25 @@
+[project]
+name = "clean-architecture-fastapi"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "alembic",
+    "bcrypt",
+    "black",
+    "email-validator",
+    "fastapi",
+    "httpx",
+    "passlib",
+    "psycopg2-binary",
+    "pyjwt",
+    "pytest",
+    "pytest-asyncio",
+    "python-dotenv",
+    "python-multipart",
+    "ruff",
+    "slowapi",
+    "sqlalchemy",
+    "uvicorn",
+]
