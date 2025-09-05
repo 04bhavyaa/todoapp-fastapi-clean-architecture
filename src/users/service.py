@@ -22,12 +22,13 @@ def change_user_password(db: Session, user_id: UUID, password_change: model.Pass
         if not verify_password(password_change.current_password, user.hashed_password):
             logging.warning(f"Invalid current password for user ID: {user_id}")
             raise InvalidPasswordError()
-        
         # verify new passwords match
         if password_change.new_password != password_change.new_password_confirm:
             logging.warning(f"New passwords do not match for user ID: {user_id}")
             raise PasswordMismatchError()
-        
+        # validate new password
+        from .validators import validate_password
+        validate_password(password_change.new_password)
         # update password
         user.hashed_password = get_hashed_password(password_change.new_password)
         db.commit()

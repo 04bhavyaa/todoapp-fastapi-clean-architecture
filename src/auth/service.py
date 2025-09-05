@@ -57,7 +57,9 @@ def verify_token(token:str) -> model.TokenData:
         raise AuthenticationError()
     
 def register_user(db: Session, register_user_request: model.RegisterUserRequest) -> None:
+    from src.users.validators import validate_password
     try:
+        validate_password(register_user_request.password)
         create_user_model = User(
             id=uuid4(),
             email=register_user_request.email,

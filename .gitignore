@@ -15,4 +15,3 @@ wheels/
 *.lock
 .pytest_cache/
 .python-version
-frontend/
